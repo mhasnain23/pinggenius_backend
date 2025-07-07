@@ -6,9 +6,12 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "chainlit>=2.5.5",
+    "fastapi>=0.115.14",
     "google-api-python-client>=2.174.0",
     "google-auth>=2.40.3",
     "google-auth-oauthlib>=1.2.2",
+    "motor>=3.7.1",
     "openai-agents>=0.0.19",
     "python-dotenv>=1.1.1",
+    "uvicorn>=0.34.3",
 ]
