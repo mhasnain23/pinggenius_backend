@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 
-from api.v1.analyze_email import router as analyze_router
-from api.v1 import generated_email
+from api.v1 import analyze_email
+from api.v1 import generate_email
+from api.v1 import save_contact
 from gmail_service import fetch_recent_emails, get_gmail_service
 
 
@@ -13,8 +14,9 @@ def read_root():
     return {"message": "PingGenius Email Agent API is running 🚀"}
 
 
-app.include_router(analyze_router, prefix="/api/v1")
-app.include_router(generated_email.router, prefix="/api/v1")
+app.include_router(analyze_email.router, prefix="/api/v1")
+app.include_router(generate_email.router, prefix="/api/v1")
+app.include_router(save_contact.router, prefix="/api/v1")
 
 
 @app.get("/latest-emails")

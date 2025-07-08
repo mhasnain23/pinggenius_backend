@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, HttpUrl
 from datetime import datetime
-from models.contact import contacts_collection
+from models.contact import save_contact_to_db
 
 router = APIRouter(tags=["Contacts"])
 
@@ -22,7 +22,7 @@ async def save_contact(contact: Contact):
         contact_data = contact.dict()
         contact_data["created_at"] = datetime.utcnow()
 
-        await contacts_collection.insert_one(contact_data)
+        await save_contact_to_db(contact_data)
 
         return {"status": "success", "message": "Contact saved!"}
 
