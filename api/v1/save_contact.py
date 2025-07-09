@@ -5,6 +5,7 @@ from models.contact import save_contact_to_db
 
 router = APIRouter(tags=["Contacts"])
 
+
 # -------- Schema --------
 class Contact(BaseModel):
     name: str
@@ -14,6 +15,7 @@ class Contact(BaseModel):
     website: HttpUrl | None = None
     tone: str = "formal"
     selected_email: str
+
 
 # -------- Route --------
 @router.post("/save-contact")
