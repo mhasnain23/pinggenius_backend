@@ -9,10 +9,10 @@ router = APIRouter(tags=["Contacts"])
 # -------- Schema --------
 class Contact(BaseModel):
     name: str
-    linkedin_url: HttpUrl
+    linkedin_url: str
     role: str
     company: str | None = None
-    website: HttpUrl | None = None
+    website: str | None = None
     tone: str = "formal"
     selected_email: str
 

@@ -63,8 +63,6 @@ write the name of user using their email address
 """,
 )
 
-# from utils.extract_name import extract_name  # assume you modularize
-
 
 @function_tool
 async def generate_reply(subject: str, body: str, sender: str) -> str:

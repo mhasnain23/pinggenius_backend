@@ -47,13 +47,22 @@ Email 2
 
 
 def smart_split_variations(output: str) -> list[str]:
-    return re.split(r"\n\s*---\s*\n", output.strip())
+    return re.split(r"\n\s*---\s*\n", output.strip())  # [email1, email2]
+
+
+def extract_name_from_linkedin(url: str) -> str:
+    # Example: https://linkedin.com/in/muhammad-hasnain
+    username = url.strip("/").split("/")[-1]
+    parts = username.replace("-", " ").title().split()# [Muhammad, Hasnain]
+    return " ".join(parts)
 
 
 async def generate_cold_email(
     linkedin_url: str, role: str, website: str | None, tone: str
 ) -> list[str]:
+    name = extract_name_from_linkedin(linkedin_url)
     input_prompt = f"""
+  Name: {name}
 LinkedIn URL: {linkedin_url}    
 Role: {role}
 Website: {website or 'Not provided'}
